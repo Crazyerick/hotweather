@@ -1,10 +1,13 @@
-package com.erick.hotweather;
+package com.erick.hotweather.business.choosearea;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.erick.hotweather.R;
+import com.erick.hotweather.business.weather.WeatherActivity;
 
 public class MainActivity extends AppCompatActivity {
 

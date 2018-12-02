@@ -1,4 +1,4 @@
-package com.erick.hotweather.gson;
+package com.erick.hotweather.data.entity;
 
 import com.google.gson.annotations.SerializedName;
 

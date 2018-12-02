@@ -2,10 +2,10 @@ package com.erick.hotweather.util;
 
 import android.text.TextUtils;
 
-import com.erick.hotweather.db.City;
-import com.erick.hotweather.db.County;
-import com.erick.hotweather.db.Province;
-import com.erick.hotweather.gson.Weather;
+import com.erick.hotweather.data.db.City;
+import com.erick.hotweather.data.db.County;
+import com.erick.hotweather.data.db.Province;
+import com.erick.hotweather.data.entity.Weather;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;

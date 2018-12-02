@@ -1,4 +1,4 @@
-package com.erick.hotweather.gson;
+package com.erick.hotweather.data.entity;
 
 public class AQI {
 

@@ -1,4 +1,4 @@
-package com.erick.hotweather;
+package com.erick.hotweather.business.weather;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,9 +20,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.erick.hotweather.gson.Forecast;
-import com.erick.hotweather.gson.Weather;
-import com.erick.hotweather.service.AutoUpdateService;
+import com.erick.hotweather.R;
+import com.erick.hotweather.data.entity.Forecast;
+import com.erick.hotweather.data.entity.Weather;
+import com.erick.hotweather.business.weather.service.AutoUpdateService;
 import com.erick.hotweather.util.HttpUtil;
 import com.erick.hotweather.util.Utility;
 

@@ -1,4 +1,4 @@
-package com.erick.hotweather.db;
+package com.erick.hotweather.data.db;
 
 import org.litepal.crud.DataSupport;
 

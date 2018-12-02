@@ -5,9 +5,9 @@
     <version value='1'></version>
 
     <list>
-        <mapping class="com.erick.hotweather.db.Province"></mapping>
-        <mapping class="com.erick.hotweather.db.City"></mapping>
-        <mapping class="com.erick.hotweather.db.County"></mapping>
+        <mapping class="com.erick.hotweather.data.db.Province"></mapping>
+        <mapping class="com.erick.hotweather.data.db.City"></mapping>
+        <mapping class="com.erick.hotweather.data.db.County"></mapping>
     </list>
 
 </litepal>

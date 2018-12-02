@@ -1,4 +1,4 @@
-package com.erick.hotweather.service;
+package com.erick.hotweather.business.weather.service;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -9,7 +9,7 @@ import android.os.IBinder;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 
-import com.erick.hotweather.gson.Weather;
+import com.erick.hotweather.data.entity.Weather;
 import com.erick.hotweather.util.HttpUtil;
 import com.erick.hotweather.util.Utility;
 

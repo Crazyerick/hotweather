@@ -1,4 +1,4 @@
-package com.erick.hotweather;
+package com.erick.hotweather.business.choosearea;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -15,9 +15,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.erick.hotweather.db.City;
-import com.erick.hotweather.db.County;
-import com.erick.hotweather.db.Province;
+import com.erick.hotweather.R;
+import com.erick.hotweather.business.weather.WeatherActivity;
+import com.erick.hotweather.data.db.City;
+import com.erick.hotweather.data.db.County;
+import com.erick.hotweather.data.db.Province;
 import com.erick.hotweather.util.HttpUtil;
 import com.erick.hotweather.util.Utility;
 
