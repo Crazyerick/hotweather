@@ -9,7 +9,7 @@ import android.os.Bundle;
 import com.erick.hotweather.R;
 import com.erick.hotweather.business.weather.WeatherActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class ChooseAreaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".business.choosearea.MainActivity">
+    tools:context=".business.choosearea.ChooseAreaActivity">
 
     <fragment
         android:id="@+id/choose_area_fragment"
