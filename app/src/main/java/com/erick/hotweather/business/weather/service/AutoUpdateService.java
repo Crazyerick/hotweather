@@ -4,13 +4,16 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.IBinder;
 import android.os.SystemClock;
-import android.preference.PreferenceManager;
 
+import com.erick.hotweather.app.LoadedApp;
 import com.erick.hotweather.data.entity.Weather;
+import com.erick.hotweather.data.source.DataRepository;
+import com.erick.hotweather.data.source.IDataSource;
+import com.erick.hotweather.network.NetworkUtil;
 import com.erick.hotweather.util.HttpUtil;
+import com.erick.hotweather.util.SPUtil;
 import com.erick.hotweather.util.Utility;
 
 import java.io.IOException;
@@ -47,28 +50,18 @@ public class AutoUpdateService extends Service {
      * 更新天气信息。
      */
     private void updateWeather() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String weatherString = prefs.getString("weather", null);
+        String weatherString = SPUtil.getString("weather", null);
         if (weatherString != null) {
-            // 有缓存时直接解析天气数据
             Weather weather = Utility.handleWeatherResponse(weatherString);
             String weatherId = weather.basic.weatherId;
-            String weatherUrl = "http://guolin.tech/api/weather?cityid=" + weatherId + "&key=ddc86730c0e54e11bd313ab04423000e";
-            HttpUtil.httpGet(weatherUrl, new Callback() {
+            DataRepository.getInstance().refreshWeather();
+            DataRepository.getInstance().queryWeather(weatherId, new IDataSource.LoadDataCallback<Weather>() {
                 @Override
-                public void onResponse(Call call, Response response) throws IOException {
-                    String responseText = response.body().string();
-                    Weather weather = Utility.handleWeatherResponse(responseText);
-                    if (weather != null && "ok".equals(weather.status)) {
-                        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(AutoUpdateService.this).edit();
-                        editor.putString("weather", responseText);
-                        editor.apply();
-                    }
+                public void onDataLoaded(Weather data) {
                 }
 
                 @Override
-                public void onFailure(Call call, IOException e) {
-                    e.printStackTrace();
+                public void onDataNotAvailable() {
                 }
             });
         }
@@ -78,14 +71,12 @@ public class AutoUpdateService extends Service {
      * 更新必应每日一图
      */
     private void updateBingPic() {
+        if (!NetworkUtil.isNetworkAvailable(LoadedApp.getContext())) return;
         String requestBingPic = "http://guolin.tech/api/bing_pic";
         HttpUtil.httpGet(requestBingPic, new Callback() {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                String bingPic = response.body().string();
-                SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(AutoUpdateService.this).edit();
-                editor.putString("bing_pic", bingPic);
-                editor.apply();
+                SPUtil.putString("bing_pic", response.body().string());
             }
 
             @Override

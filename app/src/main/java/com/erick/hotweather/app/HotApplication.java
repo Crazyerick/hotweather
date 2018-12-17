@@ -20,6 +20,7 @@ public class HotApplication extends Application {
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
+        LoadedApp.init(this);
     }
 
     @Override
